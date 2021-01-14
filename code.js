@@ -19,4 +19,13 @@ var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
 
-
+var questions = [{
+    question : "The console.log method is used for __.",
+    answerA : "Looping",
+    answerB : "Debugging",
+    answerC: "Event Listening",
+    answerD: "implementing css"},
+    {
+        question: ""
+    }
+    ]

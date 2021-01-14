@@ -10,3 +10,20 @@
     max-width: 80rem;
     margin: 0 auto;
   }
+  /*display none so it wont show in homepage*/
+  #quiz{
+      display: none;
+  }
+
+  #result {
+      display: none;
+  }
+  #endQuiz{
+display: none;
+  }
+  #highScore{
+      display: none;
+  }
+  #endgame {
+      display: none;
+  }
