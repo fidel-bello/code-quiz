@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylehseet" href="./quiz.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <!--made a div for the link to the scores and also put a timer-->
-    <div id="viewScore">
-        <div class="left">
-            <a onclick="getScore()" href="#"><h4>View Score</h4></a>
-        </div>
-        <div class="right">
-            <h4>Time: <span id="timeLeft">0</span></h4>
-        </div>
-    </div>
-    <!--made quiz introduction and start button with onclick function-->
-    <div id="quiz">
-        <div id="quizBody">
-            <h1>Code Quiz!</h1>
-            <h3>The quiz is made up of 5 questions pertaining to programming language. You will have 30 seconds to answer each question and you can save your score with your initials.</h3>
-            <button onclick="start()">Begin!</button>
-        </div>
-    </div>
-
-    <script src="./code.js"></script>
+    <!--container for quiz-->
+	<div class="container">
+<!--gave everything ids so i can manipulate later with js-->
+		<div id="start">
+			<h2>Code Quiz</h2>
+			<h2>This quiz will have questions pertaining programming language and javascript methods.You will be given 100 seconds to complete the quiz. If you get a question wrong, you will get 20 seconds subtracted from the allotted time.</h2>
+			<button id="startbtn">Begin!</button>
+			<button id="highScoreView" onclick="showHighScore()">High scores</button>
+		</div>
+		<div id="quiz">
+			<div id="timer">time left: </div>
+			<div id="questions"><p>Questions PlaceHolder</p></div>
+			<button id= "a" onclick="checkAnswer('a')">A</button>
+			<button id= "b" onclick="checkAnswer('b')">B</button>
+			<button id= "c" onclick="checkAnswer('c')">C</button>
+			<button id= "d" onclick="checkAnswer('d')">D</button>
+			<div id="result"></div>
+		</div>
+		<div id="endQuiz">
+			<div id="finalScore"></div>
+			<input type="text" size="40" placeholder="enter intitials" name="initials" id="initials"/>
+			<button id= "submitScore">submit</button>
+		</div>
+		<div id="highScore">
+			<div id= "highScorePage">
+				<h3>User initials</h3>
+				<h3>Score</h3>
+			</div>
+			<div id="highScoreInitials"></div>
+			<div id="Score"></div>
+		<div id="endGame">
+			<button id="redo" onclick="replayQuiz()">Again!</button>
+			<button id="clear" onclick="clearScore()">clear</button>
+		</div>
+		</div>
+	</div>
+	<script src="./Untitled-2.js"></script>
 </body>
 </html>
