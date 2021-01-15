@@ -91,13 +91,30 @@ function startQuiz(){
     },1000);
     quizBody.style.display = "block"
 }
+
 // function that dipslays score after quiz or when timer is runs out
 function showScore(){
     quizBody.style.display= "none";
     gameoverDiv.style.display= "flex";
     clearInterval(timeInterval);
     highscoreInputName.value = "";
-    finalScoreEl.innerHTML = "You got " + score + "out of" + questions.length + " correct!";
+    finalScoreEl.innerHTML = "You got " + score + " out of " + questions.length + " correct!";
+}
+//function that checks answers and if wrong will take of 20 sec of timer for penalty
+function checkAnswer (answer){
+    correct = questions[currentQuestionI].correctAnswer;
+
+    if(answer=== correct && currentQuestionI !== finalQuestionI){
+        score++;
+        currentQuestionI++;
+        generateQuestion();
+    }else if(ansswer !==correct && currentQuestionI !== finalQuestionI){
+        currentQuestionI++;
+        generateQuestion();
+        timeLeft -=20
+    }else{
+        showScore();
+    }
 }
 //added event listener to start quiz
 startQuizButton.addEventListener("click", startQuiz)
