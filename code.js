@@ -76,7 +76,7 @@ function generateQuestion () {
     buttonC.innerHTML = currentQuestion.answerC;
     buttonD.innerHTML = currentQuestion.answerD;
 }; 
-//function to hide start button displaying first quiz question and also timer
+//function to hide begin button displaying first quiz question and also timer
 function startQuiz(){
     gameoverDiv.style.display = "none";
     startQuizDiv.style.display = "none";
@@ -89,6 +89,15 @@ function startQuiz(){
             showScore();
         }
     },1000);
+    quizBody.style.display = "block"
+}
+// function that dipslays score after quiz or when timer is runs out
+function showScore(){
+    quizBody.style.display= "none";
+    gameoverDiv.style.display= "flex";
+    clearInterval(timeInterval);
+    highscoreInputName.value = "";
+    finalScoreEl.innerHTML = "You got " + score + "out of" + questions.length + " correct!";
 }
 //added event listener to start quiz
 startQuizButton.addEventListener("click", startQuiz)
