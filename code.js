@@ -19,7 +19,7 @@ var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
 
-
+//question and asnwer array
 var questions = [{
     question : "The console.log method is used for __.",
     answerA : "Looping",
@@ -56,3 +56,10 @@ var questions = [{
             answerD: "real",
             correctAnswer: "a"},
     ]
+    
+    var finalQuestionI = questions.length;
+    var currentQuestionI = 0;
+    var timeLeft = 76;
+    var score = 0
+    var correct;
+
