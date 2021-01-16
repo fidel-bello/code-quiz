@@ -7,13 +7,13 @@ var questionsEl = document.getElementById("questions");
 var quizTimer = document.getElementById("timer");
 var startQuizButton = document.getElementById("startbtn");
 var startQuizDiv = document.getElementById("start");
-var highscoreContainer = document.getElementById("highscore");
+var highscoreContainer = document.getElementById("highScore");
 var highscoreDiv = document.getElementById("highScorePage");
 var highscoreInputName = document.getElementById("initials");
 var highscoreDisplayName = document.getElementById("highScoreInitials");
 var endGameBtns = document.getElementById("endGame");
 var submitScoreBtn = document.getElementById("submitScore");
-var highscoreDisplayScore = document.getElementById("score");
+var highscoreDisplayScore = document.getElementById("Score");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
@@ -49,7 +49,7 @@ var questions = [{
     answerD: "integer",
     correctAnswer: "d"},
     {
-    question: "Use if to specify a block of code to be executed if specified conditions is __.",
+    question: "Use 'if' to specify a block of code to be executed if specified conditions is __.",
     answerA: "true",
     answerB: "false",
     answerC: "fake",
@@ -89,9 +89,24 @@ function startQuiz(){
             showScore();
         }
     },1000);
-    quizBody.style.display = "block"
+    quizBody.style.display = "block";
 }
+//function that checks answers and if wrong will take of 20 sec of timer for penalty
+function checkAnswer (answer){
+    correct = questions[currentQuestionI].correctAnswer;
 
+    if(answer === correct && currentQuestionI !== finalQuestionI){
+        score++;
+        currentQuestionI++;
+        generateQuestion();
+    }else if(answer !==correct && currentQuestionI !== finalQuestionI){
+        currentQuestionI++;
+        generateQuestion();
+        timeLeft -=20
+    }else{
+        showScore();
+    }
+};
 // function that dipslays score after quiz or when timer is runs out
 function showScore(){
     quizBody.style.display= "none";
@@ -100,23 +115,54 @@ function showScore(){
     highscoreInputName.value = "";
     finalScoreEl.innerHTML = "You got " + score + " out of " + questions.length + " correct!";
 }
-//function that checks answers and if wrong will take of 20 sec of timer for penalty
-function checkAnswer (answer){
-    correct = questions[currentQuestionI].correctAnswer;
+//on click for the submit and pushing user score to the array and saving into the local storage.
+submitScoreBtn.addEventListener("click", function highscore(){
 
-    if(answer=== correct && currentQuestionI !== finalQuestionI){
-        score++;
-        currentQuestionI++;
-        generateQuestion();
-    }else if(ansswer !==correct && currentQuestionI !== finalQuestionI){
-        currentQuestionI++;
-        generateQuestion();
-        timeLeft -=20
+    if(highscoreInputName.value === "") {
+        alert("initials cannot be blank");
+        return false;
     }else{
-        showScore();
+        var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+        var currentUser = highscoreInputName.value.trim();
+        var cuurentHighscore = {
+            name: currentUser,
+            score : score
+        };
+        gameoverDiv.style.display= "none";
+        highscoreContainer.style.display = "flex";
+        highscoreDiv.style.display = "block";
+        endGameBtns.style.display = "flex";
+
+        savedHighscores.push(cuurentHighscore);
+        localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+        generateHighscore();
     }
+});
+//funnction that generates saved scores and puts in high scores
+function generateHighscore (){
+    highscoreDisplayName.innerHTML = "";
+    highscoreDisplayScore.innerHTML = "";
+    var scores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    for (i = 0; i <scores.length; i++) {
+        var newName = document.createElement("li");
+        var newScore = document.createElement("li");
+         newName.textContent = scores[i].name;
+         newScore.textContent = scores[i].score;
+         highscoreDisplayName.appendChild(newName);
+         highscoreDisplayScore.appendChild(newScore);
+    
 }
+};
+
+//clears score and intitals
+function clear(){
+    window.localStorage.clear();
+    highscoreDisplayName.textContent = "";
+    highscoreDisplayScore.textContent = "";
+}
+
+
+
+
 //added event listener to start quiz
 startQuizButton.addEventListener("click", startQuiz)
-
-
