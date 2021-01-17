@@ -9,7 +9,7 @@
     align-items: center;
     max-width: 80rem;
     margin: 0 auto;
-  }
+}
   /*display none so it wont show in homepage*/
   #quiz{
       display: none;
@@ -18,12 +18,33 @@
   #result {
       display: none;
   }
+
   #endQuiz{
 display: none;
   }
+
   #highScore{
       display: none;
   }
+
   #endgame {
       display: none;
+  }  #Score {
+      display: none;
   }
+
+  #highScorePage{
+      display: none;
+  }
+
+#highScore-header {
+    display: flex;
+}
+
+#container {
+display: none;
+}
+
+#endGamev{
+    display: none;
+}

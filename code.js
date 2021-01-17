@@ -64,7 +64,7 @@ var questions = [{
     var score = 0;
     var correct;
     //fucntion to cycle through question array and generate the questions and answers
-function generateQuestion () {
+function generateQuestion(){
     gameoverDiv.style.display = "none";
     if (currentQuestionI === finalQuestionI) {
         return showScore();
@@ -85,28 +85,12 @@ function startQuiz(){
         timeLeft--;
         quizTimer.textContent = "time left: " + timeLeft;
         if(timeLeft === 0) {
-            clearInterval (timeInterval);
+            clearInterval(timeInterval);
             showScore();
         }
-    },1000);
+    }, 1000);
     quizBody.style.display = "block";
 }
-//function that checks answers and if wrong will take of 20 sec of timer for penalty
-function checkAnswer (answer){
-    correct = questions[currentQuestionI].correctAnswer;
-
-    if(answer === correct && currentQuestionI !== finalQuestionI){
-        score++;
-        currentQuestionI++;
-        generateQuestion();
-    }else if(answer !==correct && currentQuestionI !== finalQuestionI){
-        currentQuestionI++;
-        generateQuestion();
-        timeLeft -=20
-    }else{
-        showScore();
-    }
-};
 // function that dipslays score after quiz or when timer is runs out
 function showScore(){
     quizBody.style.display= "none";
@@ -153,15 +137,48 @@ function generateHighscore (){
     
 }
 };
+//displayus highscores
+function showHighscore(){
+    startQuizDiv.style.display = "none";
+    gameoverDiv.style.style = "none";
+    highscoreContainer.style.display = "flex";
+    highscoreDiv.style.display = "block";
+    endGameBtns.style.display = "flex";
+    generateHighscore();
+}
 
 //clears score and intitals
-function clear(){
+function clearScore(){
     window.localStorage.clear();
     highscoreDisplayName.textContent = "";
     highscoreDisplayScore.textContent = "";
 }
+//function to redo the quiz
+function replayQuiz(){
+    highscoreContainer.style.display = "none";
+    gameoverDiv.style.display = "none";
+    startQuizDiv.style.display = "flex";
+    timeLeft = 76;
+    score = 0;
+    currentQuestionI = 0;
+}
 
+//function that checks answers and if wrong will take of 20 sec of timer for penalty
+function checkAnswer (answer){
+    correct = questions[currentQuestionI].correctAnswer;
 
+    if(answer === correct && currentQuestionI !== finalQuestionI){
+        score++;
+        currentQuestionI++;
+        generateQuestion();
+    }else if(answer !==correct && currentQuestionI !== finalQuestionI){
+        currentQuestionI++;
+        generateQuestion();
+        timeLeft -=20
+    }else{
+        showScore();
+    }
+};
 
 
 //added event listener to start quiz
