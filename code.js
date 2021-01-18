@@ -59,7 +59,7 @@ var questions = [{
     //global variables
     var finalQuestionI = questions.length;
     var currentQuestionI = 0;
-    var timeLeft = 76;
+    var timeLeft = 100;
     var timeInterval;
     var score = 0;
     var correct;
@@ -85,7 +85,7 @@ function startQuiz(){
         timeLeft--;
         quizTimer.textContent = "time left: " + timeLeft;
         if(timeLeft <= 0) {
-            alert ("Time's Up")
+            alert ("Time's Up!")
             clearInterval(timeInterval);
             showScore();
         }
