@@ -84,7 +84,7 @@ function startQuiz(){
     timeInterval = setInterval(function(){
         timeLeft--;
         quizTimer.textContent = "time left: " + timeLeft;
-        if(timeLeft === 0) {
+        if(timeLeft <= 0) {
             clearInterval(timeInterval);
             showScore();
         }

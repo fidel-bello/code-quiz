@@ -1,50 +1,36 @@
-:root{
-    background-color: lightseagreen;
-}
-.container {
-    width: 100vw;
-    height: 100vh;
+/*made start display and have columns*/
+#start {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    max-width: 80rem;
-    margin: 0 auto;
-}
-  /*display none so it wont show in homepage*/
-  #quiz{
-      display: none;
-  }
-
-  #result {
-      display: none;
-  }
-
-  #endQuiz{
-display: none;
-  }
-
-  #highScore{
-      display: none;
-  }
-
-  #endgame {
-      display: none;
-  }  #Score {
-      display: none;
-  }
-
-  #highScorePage{
-      display: none;
-  }
-
-#highScore-header {
-    display: flex;
 }
 
-#container {
-display: none;
+#quiz {
+    display: none;
 }
 
-#endGamev{
+#result {
+    display: none;
+}
+
+#endQuiz {
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#highScorePage{
+    display: none;
+    width: 50%;
+    border: solid;
+    border-color: silver;
+    border-bottom-style: groove;
+    padding-bottom: .3rem;
+    background: lightsteelblue;
+    margin: auto;
+}
+
+#endGame{
     display: none;
 }
