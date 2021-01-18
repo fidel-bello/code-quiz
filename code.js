@@ -85,6 +85,7 @@ function startQuiz(){
         timeLeft--;
         quizTimer.textContent = "time left: " + timeLeft;
         if(timeLeft <= 0) {
+            alert ("Time's Up")
             clearInterval(timeInterval);
             showScore();
         }
