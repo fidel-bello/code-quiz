@@ -20,6 +20,18 @@ h2 {
     width: 500px;
     height: 500px;
 }
+
+
+button{
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    margin-top: 3px;
+    margin-left: 25px;
+    padding: 10px;
+}
+
 /*display none so it wouldnt shoow at starter page*/
 #quiz {
     display: none;
