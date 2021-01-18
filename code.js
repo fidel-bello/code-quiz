@@ -159,7 +159,7 @@ function replayQuiz(){
     highscoreContainer.style.display = "none";
     gameoverDiv.style.display = "none";
     startQuizDiv.style.display = "flex";
-    timeLeft = 76;
+    timeLeft = 100;
     score = 0;
     currentQuestionI = 0;
 }
