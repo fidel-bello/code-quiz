@@ -104,3 +104,12 @@ button{
 #endGame{
     display: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+      font-size: 30px;
+    }
+    body {
+        background-color: lightblue;
+      }
+  }
